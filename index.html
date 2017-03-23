@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>init --memes</title>
+         <link rel="stylesheet" type="text/css" href="index.css">
+         <link rel="stylesheet" type="text/css" href="styles.css">
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+         <!-- Your platform (jquery) scripts. -->
+         <script src="https://surveyjs.azureedge.net/0.12.4/survey.jquery.min.js"></script>
+
+         <style>
+            img.gifs
+            {
+                display: block;
+                margin-left:auto; 
+                margin-right:auto;
+            }
+         </style>
+    </head>
+<body>
+
+    <h1>init --memes</h1>
+    <div class="wrapper">
+<div class="marquee">
+ <p>Welcome! Wilkommen! &Uuml;dv&ouml;z&ouml;lj&uuml;k! Bem-vindo! Bienvenue! <b>init</b> --<i>meme</i></p>
+</div>
+</div>
+
+<p class="intro">More will be added to this webpage later...<br>
+FYI: this page is not just for computer related memes...<br>
+For now you can view these memes:
+</p>
+
+<h2>Uploading vision...</h2>
+<img class="gifs" src="images/UncloudingVision.gif">
+
+<br><br><br><br>
+
+<h2>Coding in progress...</h2>
+<img class="gifs" src="images/WhenYouveBeenCodingForAWhile.gif">
+
+<br><br><br><br>
+
+<h2>Starting program... forgot password...</h2>
+<img class="gifs" src="images/WindowsLevelSecurity.gif">
+
+<br><br><br><br>
+
+<h2>Opening windows back doors...</h2>
+<img class="gifs" src="images/WindowsBackDoorSimpsons.gif">
+
+<br><br><br><br>
+
+<h2>Doing some hacking...</h2>
+<img class="gifs" src="images/PROHACKERc.gif">
+
+<br><br><br><br>
+
+<h2>Job done :)</h3>
+<img class="gifs" src="images/FullOfEmotion.gif">
+
+<br><br><br><br>
+
+<div id="surveyContainer">
+  <script>
+
+ var surveyJSON ={
+ "pages": [
+  {
+   "name": "Meme / Edited Images Survey",
+   "questions": [
+    {
+     "type": "radiogroup",
+     "name": "memesection",
+     "title": "On a scale from \"abysmal\" to \"I fucking love this shit\" what did you think of the memes?",
+     "choices": [
+      {
+       "value": "1",
+       "text": "Abysmal"
+      },
+      {
+       "value": "2",
+       "text": "Not really to my taste"
+      },
+      {
+       "value": "3",
+       "text": "I don't really care (if you voted for this option please close this webpage immediately)."
+      },
+      {
+       "value": "4",
+       "text": "Alright."
+      },
+      {
+       "value": "5",
+       "text": "I fucking love this shit!"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
+
+</script>
+</div>
+
+<script>
+//function sendDataToServer(survey) {
+  //var resultAsString = JSON.stringify(survey.data);
+ // alert(resultAsString); //send Ajax request to your web server.
+ function sendDataToServer(survey) {
+    survey.sendResult('ea54a989-a11c-4579-b2a6-50064c1109a0');
+}
+//}
+</script>
+
+<script>
+Survey.Survey.cssType = "bootstrap";
+
+var survey = new Survey.Model(surveyJSON);
+$("#surveyContainer").SurveyWindow({
+    model:survey,
+    onComplete:sendDataToServer
+});
+</script>
+
+<script>
+var survey = new Survey.Model(surveyJSON);
+$("#surveyContainer").Survey({
+    model:survey,
+    onComplete:sendDataToServer
+});
+</script>
+
+<script>
+//You should get the Guid for storing survey data in dxSurvey.com
+survey.surveyPostId = 'e544a02f-7fff-4ffb-b62d-6a9aa16efd7c';
+//You may call survey.sendResult function as another option. 
+function sendDataToServer(survey) {
+  survey.sendResult('e544a02f-7fff-4ffb-b62d-6a9aa16efd7c');
+}
+</script>
+
+<script>
+Survey.defaultBootstrapCss.navigationButton = "btn btn-primary";
+Survey.Survey.cssType = "bootstrap";
+var survey = new Survey.Model( { surveyId: '52ede3a0-a6ed-4522-bda9-a188f4b97794' })
+$("#surveyElement").Survey({model:survey});
+
+Survey.defaultBootstrapCss.navigationButton = "btn btn-primary";
+Survey.Survey.cssType = "bootstrap";
+var survey = new Survey.Model( { 
+        surveyId: '52ede3a0-a6ed-4522-bda9-a188f4b97794',
+        surveyPostId: '3ce10f8b-2d8a-4ca2-a110-2994b9e697a1'
+    });
+
+
+$("#surveyElement").Survey({model:survey});  
+
+
+Survey.defaultBootstrapCss.navigationButton = "btn btn-primary";
+Survey.Survey.cssType = "bootstrap";
+var survey = new Survey.Model({
+        surveyId: '5af48e08-a0a5-44a5-83f4-1c90e8e98de1',
+        surveyPostId: '3ce10f8b-2d8a-4ca2-a110-2994b9e697a1'
+});
+
+var surveySendResult = function(s, options) {
+    if(options.success) {
+        s.getResult('a15eee7a-9418-4eb4-9671-2009c8ff6b24', 'langs');
+    }
+};
+var surveyGetResult = function(s, options) {
+    if(options.success) {
+        showChart(options.dataList);
+    }
+};
+function showChart(chartDataSource) {
+    document.getElementById("chartContainer").style.height = "500px";
+    $("#chartContainer").dxPieChart({
+        dataSource: chartDataSource,
+        series: {
+            argumentField: 'name',
+            valueField: 'value'
+        }
+    });
+}
+
+
+$("#surveyElement").Survey({
+    model: survey,
+    onSendResult: surveySendResult,
+    onGetResult: surveyGetResult
+});
+
+Survey.defaultBootstrapCss.navigationButton = "btn btn-primary";
+Survey.Survey.cssType = "bootstrap";
+function onIsSurveyCompleted(success, result, response) {
+    if(!success) return;
+    if(result == 'completed') {
+        alert('You have already run the survey!');
+    } else {
+        runSurvey();
+    }
+}
+
+function runSurveyCheck() {
+    var clientId = document.getElementById('clientId').value;
+    new Survey.dxSurveyService().isCompleted('47e699f7-d523-4476-8fcd-be601c91d119', clientId, onIsSurveyCompleted);
+}
+function surveyComplete(s) { 
+    document.getElementById('surveyContainer').innerHTML = ""; 
+    document.getElementById("clientIdContainer").style.display = "inline";
+}
+function surveySendResult(survey) { 
+    var text = "clientId:" + survey.clientId + ". The results are:" + JSON.stringify(survey.data)  + String.fromCharCode(13, 10);
+    var memo = document.getElementById('sentResults');
+    memo.value = memo.value + text;
+}
+
+
+function runSurvey() {
+    document.getElementById("clientIdContainer").style.display = "none";    
+    survey.sendResultOnPageNext = document.getElementById('sendResultOnPageNext').checked;
+    var clientId = document.getElementById('clientId').value;
+
+    $("#surveyElement").Survey({
+        model: survey,
+        clientId: clientId,
+        onComplete: surveyComplete,
+        onSendResult: surveySendResult
+    });
+
+}
+
+var survey = new Survey.Model({
+        surveyId: 'e7866476-e901-4ab7-9f38-574416387f73',
+        surveyPostId: 'df2a04fb-ce9b-44a6-a6a7-6183ac555a68'
+}, "surveyContainer");
+window.runSurveyCheck = runSurveyCheck;
+</script> 
+
+
+</body>
+</html>
+
